@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Terminal output color utilities ──────────────────────────────────────
+   Kept as plain CSS because command handlers return raw HTML strings
+   with these class names. Converting 200+ strings to JSX is not worth it. */
+.cg  { color: #00ff41; }
+.cg2 { color: #39d353; }
+.cc  { color: #79c0ff; }
+.cy  { color: #e3b341; }
+.cr  { color: #f85149; }
+.cp  { color: #bc8cff; }
+.cm  { color: #606b78; }
+.cw  { color: #e6edf3; }
+.cd  { color: #3d444d; }
+
+/* ── Terminal output lines ───────────────────────────────────────────── */
+.ln {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.65;
+  min-height: 1.65em;
+}
+.ln a {
+  color: #79c0ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ln a:hover {
+  color: #00ff41;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #21262d; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #3d444d; }
+
+/* ── Terminal scanline background ────────────────────────────────────── */
+.terminal-scanline {
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px
+  );
+}
+
+/* ── Online dot pulse ────────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,255,65,0.5); }
+  60%      { opacity: 0.8; box-shadow: 0 0 0 5px rgba(0,255,65,0); }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+/* ── Cursor blink ─────────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1.2s step-end infinite;
+}
+
+/* ── Shell theme CSS variables ────────────────────────────────────────── */
+:root {
+  --term-bg:     #0c0e0f;
+  --term-navbg:  #111416;
+  --term-border: #21262d;
+}
+html.pwsh {
+  --term-bg:     #0f2d4a;
+  --term-navbg:  #091e33;
+  --term-border: #1a5190;
+}
+html.pwsh .cg  { color: #67e8f9; }
+html.pwsh .cg2 { color: #38bdf8; }
+html.pwsh .cc  { color: #7dd3fc; }
+html.pwsh .cy  { color: #fde047; }
+html.pwsh .cr  { color: #ff6b6b; }
+html.pwsh .cp  { color: #c792ea; }
+html.pwsh .cm  { color: #94a3b8; }
+html.pwsh .cw  { color: #f0f9ff; }
+html.pwsh .cd  { color: #1e4976; }
+html.pwsh .text-term-green { color: #67e8f9; }
