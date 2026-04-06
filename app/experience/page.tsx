@@ -83,7 +83,7 @@ export default function ExperiencePage() {
             ~/work-experience
           </h1>
           <p className="text-term-muted text-[12px] mt-1">
-            // Building scalable infrastructure, one pipeline at a time
+            {"// Building scalable infrastructure, one pipeline at a time"}
           </p>
         </div>
         <a
